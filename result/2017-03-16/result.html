@@ -1,0 +1,3113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>android联运sdk测试报告</title>
+	<meta name="generator" content="HTMLTestRunner 0.8.2"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+	margin-top: 0ex;
+	margin-bottom: 1ex;
+}
+
+.heading .attribute {
+	margin-top: 1ex;
+	margin-bottom: 0;
+}
+
+.heading .description {
+	margin-top: 4ex;
+	margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+	color: red;
+}
+
+.popup_window {
+	display: none;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	/*border: solid #627173 1px; */
+	padding: 10px;
+	background-color: #E6E6D6;
+	font-family: "Lucida Console", "Courier New", Courier, monospace;
+	text-align: left;
+	font-size: 8pt;
+	width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+	margin-top: 3ex;
+	margin-bottom: 1ex;
+}
+#result_table {
+	width: 80%;
+	border-collapse: collapse;
+	border: 1px solid #777;
+}
+#header_row {
+	font-weight: bold;
+	color: white;
+	background-color: #777;
+}
+#result_table td {
+	border: 1px solid #777;
+	padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+	trs = document.getElementsByTagName("tr");
+	for (var i = 0; i < trs.length; i++) {
+		tr = trs[i];
+		id = tr.id;
+		if (id.substr(0,2) == 'ft') {
+			if (level < 1) {
+				tr.className = 'hiddenRow';
+			}
+			else {
+				tr.className = '';
+			}
+		}
+		if (id.substr(0,2) == 'pt') {
+			if (level > 1) {
+				tr.className = '';
+			}
+			else {
+				tr.className = 'hiddenRow';
+			}
+		}
+	}
+}
+
+
+function showClassDetail(cid, count) {
+	var id_list = Array(count);
+	var toHide = 1;
+	for (var i = 0; i < count; i++) {
+		tid0 = 't' + cid.substr(1) + '.' + (i+1);
+		tid = 'f' + tid0;
+		tr = document.getElementById(tid);
+		if (!tr) {
+			tid = 'p' + tid0;
+			tr = document.getElementById(tid);
+		}
+		id_list[i] = tid;
+		if (tr.className) {
+			toHide = 0;
+		}
+	}
+	for (var i = 0; i < count; i++) {
+		tid = id_list[i];
+		if (toHide) {
+			document.getElementById('div_'+tid).style.display = 'none'
+			document.getElementById(tid).className = 'hiddenRow';
+		}
+		else {
+			document.getElementById(tid).className = '';
+		}
+	}
+}
+
+
+function showTestDetail(div_id){
+	var details_div = document.getElementById(div_id)
+	var displayState = details_div.style.display
+	// alert(displayState)
+	if (displayState != 'block' ) {
+		displayState = 'block'
+		details_div.style.display = 'block'
+	}
+	else {
+		details_div.style.display = 'none'
+	}
+}
+
+
+function html_escape(s) {
+	s = s.replace(/&/g,'&amp;');
+	s = s.replace(/</g,'&lt;');
+	s = s.replace(/>/g,'&gt;');
+	return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+	var w = window.open("", //url
+					name,
+					"resizable,scrollbars,status,width=800,height=450");
+	d = w.document;
+	d.write("<pre>");
+	d.write(html_escape(output_list[id]));
+	d.write("\n");
+	d.write("<a href='javascript:window.close()'>close</a>\n");
+	d.write("</pre>\n");
+	d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>android联运sdk测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2017-03-16 15:25:11</p>
+<p class='attribute'><strong>Duration:</strong> 1:16:22.532916</p>
+<p class='attribute'><strong>Status:</strong> Pass 89 Failure 1</p>
+
+<p class='description'>用例执行情况：</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+	<td colspan='2'>Test Group/Test case</td>
+	<td>Count</td>
+	<td>Pass</td>
+	<td>Fail</td>
+	<td>Error</td>
+	<td>View</td>
+	<td>Screenshot</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c1</td>
+	<td>test00.AndroidSDK: 快速注册</td>
+	<td>7</td>
+	<td>7</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c1',7)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0001: 快速注册，输入空密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+		pass</a>
+
+	<div id='div_pt1.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.1: 测试结果: 请输入密码!
+预期结果: 请输入密码!
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0002: 快速注册，输入5个数字密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+		pass</a>
+
+	<div id='div_pt1.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.2: 测试结果: 密码不得少于6位!
+预期结果: 密码不得少于6位!
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0003: 快速注册，输入6个英文密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+		pass</a>
+
+	<div id='div_pt1.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.3: 测试结果: 进入游戏
+预期结果: 进入游戏
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0004: 快速注册，输入7个英数密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+		pass</a>
+
+	<div id='div_pt1.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.4: 测试结果: 进入游戏
+预期结果: 进入游戏
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0005: 快速注册，输入特殊符号和中文</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+		pass</a>
+
+	<div id='div_pt1.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.5: 测试结果: 请输入密码（不少于6位）
+预期结果: 请输入密码（不少于6位）
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0006: 快速注册，密码输入完成 ，点击右上角返回按钮</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+		pass</a>
+
+	<div id='div_pt1.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.6: 测试结果: 快速注册
+预期结果: 快速注册
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_0007: 注册成功后，点击进入游戏</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+		pass</a>
+
+	<div id='div_pt1.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt1.7: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c2</td>
+	<td>test01.AndroidSDK: 玩+账号注册</td>
+	<td>10</td>
+	<td>10</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c2',10)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1001: 玩+账号注册，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+		pass</a>
+
+	<div id='div_pt2.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.1: 测试结果: 请输入账号
+预期结果: 请输入账号
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1002: 玩+账号，输入3位中文，密码5位数字，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+		pass</a>
+
+	<div id='div_pt2.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.2: 测试结果: 密码要6个以上字符
+预期结果: 密码要6个以上字符
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1003: 玩+账号，输入4位数字，密码6位字母，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+		pass</a>
+
+	<div id='div_pt2.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.3: 测试结果: 账号不能为纯数字
+预期结果: 账号不能为纯数字
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1004: 玩+账号，输入9位字母，密码为空，确认密码与密码不一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+		pass</a>
+
+	<div id='div_pt2.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.4: 测试结果: 请输入密码
+预期结果: 请输入密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1005: 玩+账号，输入14位（中英数），密码7位（英数），确认密码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.5')" >
+		pass</a>
+
+	<div id='div_pt2.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.5: 测试结果: 请输入确认密码
+预期结果: 请输入确认密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1006: 玩+账号，输入15位（中英数符），密码11位（中英数），确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.6')" >
+		pass</a>
+
+	<div id='div_pt2.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.6: 测试结果: 用户名格式错误(必须全部由字母、数字、中划线或下划线字符构成)
+预期结果: 用户名格式错误(必须全部由字母、数字、中划线或下划线字符构成)
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1007: 玩+账号，输入空格</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.7')" >
+		pass</a>
+
+	<div id='div_pt2.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.7: 测试结果: 账号不能包含空格
+预期结果: 账号不能包含空格
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1008: 玩+账号，输入16位（中英数），密码21位（英数），确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+		pass</a>
+
+	<div id='div_pt2.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.8: 测试结果: 3-15个字符，数字、字母或中文
+预期结果: 3-15个字符，数字、字母或中文
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1009: 注册成功后，点击进入游戏登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.9')" >
+		pass</a>
+
+	<div id='div_pt2.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.9: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt2.10' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_1010: 玩+账号，输入完成 ，点击右上角返回按钮</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.10')" >
+		pass</a>
+
+	<div id='div_pt2.10' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt2.10').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt2.10: 测试结果: 登  录
+预期结果: 登  录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c3</td>
+	<td>test02.AndroidSDK: 手机号注册</td>
+	<td>14</td>
+	<td>14</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c3',14)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2001: 手机号注册，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+		pass</a>
+
+	<div id='div_pt3.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.1: 测试结果: 请输入您的手机号码
+预期结果: 请输入您的手机号码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2002: 手机号注册，输入为空格</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+		pass</a>
+
+	<div id='div_pt3.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.2: 测试结果: 手机号码为必填
+预期结果: 手机号码为必填
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2003: 手机号注册，输入10位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+		pass</a>
+
+	<div id='div_pt3.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.3: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2004: 手机号注册，输入11位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.4')" >
+		pass</a>
+
+	<div id='div_pt3.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.4: 测试结果: 验证码已发送，请查看手机。
+预期结果: 验证码已发送，请查看手机。
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2005: 手机号注册，输入12位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.5')" >
+		pass</a>
+
+	<div id='div_pt3.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.5: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2006: 手机号注册，输入已注册手机号</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.6')" >
+		pass</a>
+
+	<div id='div_pt3.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.6: 测试结果: 手机号码已被注册
+预期结果: 手机号码已被注册
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2007: 手机号注册，正确手机号，验证码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.7')" >
+		pass</a>
+
+	<div id='div_pt3.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.7: 测试结果: 请输入验证码
+预期结果: 请输入验证码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2008: 手机号注册，正确手机号，错误验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.8')" >
+		pass</a>
+
+	<div id='div_pt3.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.8: 测试结果: 验证码错误
+预期结果: 验证码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2009: 手机号注册，输入完成 ，点击右上角返回按钮</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.9')" >
+		pass</a>
+
+	<div id='div_pt3.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.9: 测试结果: 登  录
+预期结果: 登  录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.10' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2010: 手机号注册，正确手机号，正确验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.10')" >
+		pass</a>
+
+	<div id='div_pt3.10' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.10').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.10: 测试结果: 设置密码并进入游戏
+预期结果: 设置密码并进入游戏
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.11' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2011: 设置密码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.11')" >
+		pass</a>
+
+	<div id='div_pt3.11' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.11').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.11: 测试结果: 请输入密码
+预期结果: 请输入密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.12' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2012: 设置密码和确认密码为少6位</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.12')" >
+		pass</a>
+
+	<div id='div_pt3.12' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.12').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.12: 测试结果: 密码至少6位
+预期结果: 密码至少6位
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.13' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2013: 设置密码和确认密码不一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.13')" >
+		pass</a>
+
+	<div id='div_pt3.13' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.13').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.13: 测试结果: 两次输入的密码不一样
+预期结果: 两次输入的密码不一样
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt3.14' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_2014: 设置6位数密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.14')" >
+		pass</a>
+
+	<div id='div_pt3.14' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt3.14').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt3.14: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c4</td>
+	<td>test03.AndroidSDK: 忘记密码</td>
+	<td>13</td>
+	<td>13</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c4',13)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3001: 忘记密码，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+		pass</a>
+
+	<div id='div_pt4.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.1: 测试结果: 请输入您的手机号码
+预期结果: 请输入您的手机号码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3002: 忘记密码，输入10位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+		pass</a>
+
+	<div id='div_pt4.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.2: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3003: 忘记密码，输入11位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.3')" >
+		pass</a>
+
+	<div id='div_pt4.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.3: 测试结果: 验证码已发送，请查看手机
+预期结果: 验证码已发送，请查看手机
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3004: 忘记密码，输入12位数</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.4')" >
+		pass</a>
+
+	<div id='div_pt4.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.4: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3005: 忘记密码，正确手机号，验证码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.5')" >
+		pass</a>
+
+	<div id='div_pt4.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.5: 测试结果: 请输入验证码
+预期结果: 请输入验证码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3006: 忘记密码，正确手机号，错误验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.6')" >
+		pass</a>
+
+	<div id='div_pt4.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.6: 测试结果: 验证码错误
+预期结果: 验证码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3007: 忘记密码，输入未注册手机号</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.7')" >
+		pass</a>
+
+	<div id='div_pt4.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.7: 测试结果: 用户未绑定手机号码
+预期结果: 用户未绑定手机号码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3008: 忘记密码，正确手机号，错误验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.8')" >
+		pass</a>
+
+	<div id='div_pt4.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.8: 测试结果: 登  录
+预期结果: 登  录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3009: 忘记密码，正确手机号，正确验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.9')" >
+		pass</a>
+
+	<div id='div_pt4.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.9: 测试结果: 请输入新密码
+预期结果: 请输入新密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.10' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3010: 新密码，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.10')" >
+		pass</a>
+
+	<div id='div_pt4.10' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.10').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.10: 测试结果: 请输入您的密码
+预期结果: 请输入您的密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.11' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3011: 新密码，密码和确认密码为少6位</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.11')" >
+		pass</a>
+
+	<div id='div_pt4.11' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.11').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.11: 测试结果: 密码不少于6位
+预期结果: 密码不少于6位
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.12' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3012: 新密码，密码和确认密码不一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.12')" >
+		pass</a>
+
+	<div id='div_pt4.12' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.12').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.12: 测试结果: 前后密码不一致，请重新输入密码
+预期结果: 前后密码不一致，请重新输入密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt4.13' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_3013: 新密码，密码和确认密码6位</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.13')" >
+		pass</a>
+
+	<div id='div_pt4.13' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt4.13').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt4.13: 测试结果: 登  录
+预期结果: 登  录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c5</td>
+	<td>test04.AndroidSDK: 登录</td>
+	<td>10</td>
+	<td>10</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c5',10)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4001: 账号输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+		pass</a>
+
+	<div id='div_pt5.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.1: 测试结果: 请输入您的玩+账号/手机号
+预期结果: 请输入您的玩+账号/手机号
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4002: 账号输入不为空，密码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+		pass</a>
+
+	<div id='div_pt5.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.2: 测试结果: 请输入密码
+预期结果: 请输入密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4003: 正确账号，错误密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.3')" >
+		pass</a>
+
+	<div id='div_pt5.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.3: 测试结果: 用户名或者密码错误
+预期结果: 用户名或者密码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4004: 错误账号，正确密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.4')" >
+		pass</a>
+
+	<div id='div_pt5.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.4: 测试结果: 用户名或者密码错误
+预期结果: 用户名或者密码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4005: 错误账号，错误密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.5')" >
+		pass</a>
+
+	<div id='div_pt5.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.5: 测试结果: 用户名或者密码错误
+预期结果: 用户名或者密码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4006: 正确账号，密码少于6位</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.6')" >
+		pass</a>
+
+	<div id='div_pt5.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.6: 测试结果: 密码不得少于6位
+预期结果: 密码不得少于6位
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4007: 正确账号，正确密码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.7')" >
+		pass</a>
+
+	<div id='div_pt5.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.7: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4008: 登录界面，输入完成 ，点击右上角X按钮</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.8')" >
+		pass</a>
+
+	<div id='div_pt5.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.8: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4009: 登录多个账号，查看记住账号</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.9')" >
+		pass</a>
+
+	<div id='div_pt5.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.9: 测试结果: 5
+预期结果: 5
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt5.10' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_4010: 选择列表中的账号登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.10')" >
+		pass</a>
+
+	<div id='div_pt5.10' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt5.10').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt5.10: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c6</td>
+	<td>test05.AndroidSDK: 账号安全--绑定手机号、绑定邮箱</td>
+	<td>19</td>
+	<td>19</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c6',19)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5001: 切换账号</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+		pass</a>
+
+	<div id='div_pt6.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.1: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5002: 账号安全，绑定手机号，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+		pass</a>
+
+	<div id='div_pt6.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.2: 测试结果: 请输入手机号码。
+预期结果: 请输入手机号码。
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5003: 账号安全，绑定手机号，输入10位数字</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.3')" >
+		pass</a>
+
+	<div id='div_pt6.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.3: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5004: 账号安全，绑定手机号，输入12位数字</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.4')" >
+		pass</a>
+
+	<div id='div_pt6.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.4: 测试结果: 手机号码格式错误
+预期结果: 手机号码格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5005: 账号安全，绑定手机号，输入已绑定手机</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.5')" >
+		pass</a>
+
+	<div id='div_pt6.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.5: 测试结果: 手机号码已绑定其他用户
+预期结果: 手机号码已绑定其他用户
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5006: 账号安全，绑定手机号，11位数字，验证为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.6')" >
+		pass</a>
+
+	<div id='div_pt6.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.6: 测试结果: 验证码错误
+预期结果: 验证码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5007: 账号安全，绑定手机号，11位数字，错误验证</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.7')" >
+		pass</a>
+
+	<div id='div_pt6.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.7: 测试结果: 验证码错误
+预期结果: 验证码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5008: 账号安全，绑定邮箱，输入为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.8')" >
+		pass</a>
+
+	<div id='div_pt6.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.8: 测试结果: 请输入要绑定的邮箱
+预期结果: 请输入要绑定的邮箱
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5009: 输入错误的邮箱</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.9')" >
+		pass</a>
+
+	<div id='div_pt6.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.9: 测试结果: 邮箱格式错误
+预期结果: 邮箱格式错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.10' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5010: 输入正确的邮箱</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.10')" >
+		pass</a>
+
+	<div id='div_pt6.10' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.10').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.10: 测试结果: 验证邮件已发送至您的邮箱
+预期结果: 验证邮件已发送至您的邮箱
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.11' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5011: 输入已绑定的邮箱</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.11')" >
+		pass</a>
+
+	<div id='div_pt6.11' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.11').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.11: 测试结果: 邮箱已被其他用户使用
+预期结果: 邮箱已被其他用户使用
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.12' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5012: 查看已绑定手机</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.12')" >
+		pass</a>
+
+	<div id='div_pt6.12' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.12').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.12: 测试结果: 13143670126
+预期结果: 13143670126
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.13' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5013: 过期验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.13')" >
+		pass</a>
+
+	<div id='div_pt6.13' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.13').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.13: 测试结果: 手机验证码过期
+预期结果: 手机验证码过期
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.14' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5014: 点击发送验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.14')" >
+		pass</a>
+
+	<div id='div_pt6.14' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.14').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.14: 测试结果: 验证码已发送，请查看手机。
+预期结果: 验证码已发送，请查看手机。
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.15' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5015: 空验证码</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.15')" >
+		pass</a>
+
+	<div id='div_pt6.15' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.15').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.15: 测试结果: 请输入验证码
+预期结果: 请输入验证码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.16' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5016: 错误验证吗</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.16')" >
+		pass</a>
+
+	<div id='div_pt6.16' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.16').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.16: 测试结果: 验证码错误
+预期结果: 验证码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.17' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5017: 解绑手机</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.17')" >
+		pass</a>
+
+	<div id='div_pt6.17' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.17').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.17: 测试结果: 个人中心
+预期结果: 个人中心
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.18' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5018: 绑定手机</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.18')" >
+		pass</a>
+
+	<div id='div_pt6.18' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.18').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.18: 测试结果: 返  回
+预期结果: 返  回
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt6.19' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_5019</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.19')" >
+		pass</a>
+
+	<div id='div_pt6.19' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt6.19').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt6.19: 测试结果: 个人中心
+预期结果: 个人中心
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='failClass'>
+	<td>c7</td>
+	<td>test06.AndroidSDK: 账号安全--更改密码</td>
+	<td>9</td>
+	<td>8</td>
+	<td>1</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c7',9)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6001: 更改密码，原密码输入空，密码输入6位数字，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+		pass</a>
+
+	<div id='div_pt7.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.1: 测试结果: 请输入原密码
+预期结果: 
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6002: 更改密码，输入正确原密码，密码输入为空，确认密码为非空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+		pass</a>
+
+	<div id='div_pt7.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.2: 测试结果: 请输入新密码
+预期结果: 请输入新密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6003: 更改密码，输入正确原密码，密码输入11位字母，确认密码为空</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.3')" >
+		pass</a>
+
+	<div id='div_pt7.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.3: 测试结果: 请输入确认密码
+预期结果: 请输入确认密码
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6004: 更改密码，输入错误原密码，密码输入6位字母+数字，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.4')" >
+		pass</a>
+
+	<div id='div_pt7.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.4: 测试结果: 原密码错误
+预期结果: 原密码错误
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6005: 更改密码，输入正确原密码，密码输入5位字母+数字，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.5')" >
+		pass</a>
+
+	<div id='div_pt7.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.5: 测试结果: 密码要6个以上字符
+预期结果: 密码要6个以上字符
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6006: 更改密码，输入正确原密码，密码输入8位字母+数字+符号，确认密码与密码不一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.6')" >
+		pass</a>
+
+	<div id='div_pt7.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.6: 测试结果: 前后密码不一致
+预期结果: 前后密码不一致
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6007: 更改密码，输入正确原密码，密码输入10位字母+数字，确认密码与密码一致</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.7')" >
+		pass</a>
+
+	<div id='div_pt7.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.7: 测试结果: 密码修改成功！
+预期结果: 密码修改成功！
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='ft7.8' class='none'>
+	<td  align='center'></td>
+	<td class='failCase'><div class='testcase'>test_6008: 修改密码后登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.8')" >
+		fail</a>
+
+	<div id='div_ft7.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_ft7.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+ft7.8: 测试结果: 登  录
+预期结果: 元素为空
+Traceback (most recent call last):
+  File "/Users/zhaozhiquan/automation/AndroidSdk/TestCase/test06.py", line 246, in test_6008
+    self.dy_IsNone(self.driver,LOGIN_BUTTON,self.case_id[71])
+  File "/Users/zhaozhiquan/automation/AndroidSdk/public/methods.py", line 94, in dy_IsNone
+    self.assertIsNone(obj)
+AssertionError: &lt;appium.webdriver.webelement.WebElement (session="53a57178-6ac7-45de-b45e-e9696c879292", element="3")&gt; is not None
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="screencap/test_6008.png" title="screencap/test_6008.png ">
+	<img src="screencap/test_6008.png" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt7.9' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_6009: 查看消费记录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.9')" >
+		pass</a>
+
+	<div id='div_pt7.9' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt7.9').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt7.9: 测试结果: 暂时没有充值记录
+预期结果: 暂时没有充值记录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr class='passClass'>
+	<td>c8</td>
+	<td>test07.AndroidSDK: 第三方登录</td>
+	<td>8</td>
+	<td>8</td>
+	<td>0</td>
+	<td>0</td>
+	<td><a href="javascript:showClassDetail('c8',8)">Detail</a></td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7001: 微信登录--取消</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+		pass</a>
+
+	<div id='div_pt8.1' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.1: 测试结果: 账号登录
+预期结果: 账号登录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7002: 微博登录--取消</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.2')" >
+		pass</a>
+
+	<div id='div_pt8.2' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.2').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.2: 测试结果: 账号登录
+预期结果: 账号登录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7003: QQ登录--取消</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.3')" >
+		pass</a>
+
+	<div id='div_pt8.3' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.3').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.3: 测试结果: 账号登录
+预期结果: 账号登录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.4' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7004: 微信登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.4')" >
+		pass</a>
+
+	<div id='div_pt8.4' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.4').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.4: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.5' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7005: 微博登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.5')" >
+		pass</a>
+
+	<div id='div_pt8.5' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.5').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.5: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.6' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7006: QQ登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.6')" >
+		pass</a>
+
+	<div id='div_pt8.6' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.6').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.6: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.7' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7007: 选择第三方界面，点击 X 按钮</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.7')" >
+		pass</a>
+
+	<div id='div_pt8.7' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.7').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.7: 登录界面已退出,测试通过
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='pt8.8' class='hiddenRow'>
+	<td  align='center'></td>
+	<td class='none'><div class='testcase'>test_7008: 选择第三方界面，点击账号登录</div></td>
+	<td colspan='5' align='center'>
+
+	<!--css div popup start-->
+	<a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.8')" >
+		pass</a>
+
+	<div id='div_pt8.8' class="popup_window">
+		<div style='text-align: right; color:red;cursor:pointer'>
+		<a onfocus='this.blur();' onclick="document.getElementById('div_pt8.8').style.display = 'none' " >
+		   [x]</a>
+		</div>
+		<pre>
+		
+pt8.8: 测试结果: 登  录
+预期结果: 登  录
+
+
+		</pre>
+	</div>
+	<!--css div popup end-->
+	</td>
+	<td align='center'>
+	<a target="_blank" href="None" title="None ">
+	<img src="None" height=20 width=20 border=0 /></a>
+	</td>
+
+</tr>
+
+<tr id='total_row'>
+	<td colspan='2'>Total</td>
+	<td>90</td>
+	<td>89</td>
+	<td>1</td>
+	<td>0</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
